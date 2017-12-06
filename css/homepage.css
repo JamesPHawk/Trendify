@@ -1,3 +1,51 @@
 * {
     font-family: 'Raleway', sans-serif !important;
 }
+
+/* Background Image */
+
+#homeBG {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    opacity: 0.9;
+    z-index: -1;
+}
+
+#dropdown {
+    position: absolute;
+}
+
+#dropbtn {
+    background-color: brown;
+}
+
+#dropbtn a {
+    text-decoration: none;
+    color: white;
+}
+
+#links {
+    position: absolute;
+    display: none;
+    background-color: #f9f9f9;
+    min-width: 160px;
+}
+
+#links a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    border: 1px solid black;
+    color: brown;
+}
+
+#links a:hover {
+    background: bisque;
+    /* Either bisque or beige */
+}
+
+#dropdown:hover #links {
+    display: block;
+}
