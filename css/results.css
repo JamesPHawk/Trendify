@@ -1,0 +1,22 @@
+* {
+    font-family: 'Raleway', sans-serif !important;
+}
+
+/* Background Image */
+
+#resultsBG {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    opacity: 0.9;
+    z-index: -1;
+}
+
+#dropdown {
+    position: absolute;
+}
+
+#dropdown h1 {
+    padding: 5px;
+}

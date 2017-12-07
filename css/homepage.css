@@ -123,13 +123,13 @@
     top: 230px;
 }
 
-#loginButton button {
+#loginButton input {
     border: 2px rgb(108, 114, 122) solid;
     color: rgb(108, 114, 122);
     font-size: 18px;
 }
 
-#loginButton button:hover {
+#loginButton input:hover {
     color: white;
     border: 2px white solid;
 }
