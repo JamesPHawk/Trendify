@@ -95,14 +95,12 @@ def artistAttributes(artist):
 
 client = MongoClient('mongodb://localhost:27017')
 
-csu = "http://128.210.106.85"
-port = 80
-redirectURI = csu
-
+csu = "http://128.210.106.73"
+port = 5000
 app = Flask(__name__)
 @app.route('/')
 def home():
-    return render_template("homepage.html")
+    return render_template("index.html")
 
 @app.route('/result.html', methods=['POST'])
 def my_link():
@@ -119,5 +117,4 @@ def my_link():
         return albumAttributes(album, artist)
 
 if __name__ == '__main__':
-    app.config['SERVER_NAME'] = 'https://dzcq7nfhi7t6b.cloudfront.net/homepage'
     app.run(host='0.0.0.0', port=port, debug=True)
