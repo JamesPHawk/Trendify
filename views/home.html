@@ -17,13 +17,61 @@
     </div>
     <img src="img/record.jpg" alt="Record Player" id="homeBG">
     <div id="dropdown">
-        <button id="dropbtn"><a href="#">Trendify</a></button>
-        <div id="links">
-            <a href="#">Profile</a>
-            <a href="#">Reciter</a>
+        <h1>Trendify</h1>
+    </div>
+    <div id="box">
+        <!-- <p>Log In or Sign Up</p> -->
+        <div id="options">
+            <nav class="tabs" data-component="tabs" data-equals="true">
+                <ul>
+                    <li class="active"><a href="#tab1">Song</a></li>
+                    <li><a href="#tab2">Artist</a></li>
+                    <li><a href="#tab3">Album</a></li>
+                </ul>
+            </nav>
         </div>
+        <div id="descr">
+            <p>Learn about any song, artist, or album you can think of.</p>
+        </div>
+        <form action="insert_link_here" method="POST" class="form">
+            <div id="tab1">
+                <div class="form-item">
+                    <label>Song</label>
+                    <input type="text">
+                    <br>
+                    <label>Artist</label>
+                    <input type="password">
+                </div>
+                <div id="loginButton">
+                    <button class="button secondary round outline">Go</button>
+                </div>
+            </div>
+            <div id="tab2">
+                <div class="form-item">
+                    <label>Artist</label>
+                    <input type="text">
+                </div>
+                <div id="loginButton">
+                    <button class="button secondary round outline">Go</button>
+                </div>
+            </div>
+            <div id="tab3">
+                <div class="form-item">
+                    <label>Album</label>
+                    <input type="text">
+                    <br>
+                    <label>Artist</label>
+                    <input type="text">
+                </div>
+                <div id="loginButton">
+                    <button class="button secondary round outline">Go</button>
+                </div>
+            </div>
+        </form>
     </div>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="../js/kube.js"></script>
 </body>
 
 </html>
