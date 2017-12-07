@@ -3,6 +3,8 @@
 <html>
 
 <head>
+    <!-- Kube CSS -->
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../css/kube.css">
@@ -19,11 +21,77 @@
     <div id="dropdown">
         <button id="dropbtn"><a href="#">Trendify</a></button>
         <div id="links">
+            <a href="home.html">Home</a>
             <a href="#">Profile</a>
             <a href="#">Reciter</a>
+            <a href="login.html">Log Out</a>
         </div>
     </div>
 
+    <!-- <form id="form">
+        <div class="row gutters">
+            <div class="col col-6">
+                <div class="form-item">
+                    <label>City <span class="req">*</span></label>
+                    <input type="text">
+                </div>
+            </div>
+            <div class="col col-6">
+                <div class="form-item">
+                    <label>City <span class="req">*</span></label>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+    </form> -->
+
+    <div id="box">
+        <div id="options">
+            <nav class="tabs" data-component="tabs" data-equals="true">
+                <ul>
+                    <li class="active"><a href="#tab1">Song</a></li>
+                    <li><a href="#tab2">Artist</a></li>
+                    <li><a href="#tab3">Album</a></li>
+                </ul>
+            </nav>
+        </div>
+        <form class="form">
+            <div id="tab1">
+                <div class="form-item">
+                    <label>Enter Song</label>
+                    <input type="text">
+                    <label>Enter Artist</label>
+                    <input type="text">
+                </div>
+                <div id="loginButton">
+                    <button class="button secondary round outline">Go</button>
+                </div>
+            </div>
+            <div id="tab2">
+                <div class="form-item">
+                    <label>Enter Artist</label>
+                    <input type="text">
+                </div>
+                <div id="loginButton">
+                    <button class="button secondary round outline">Go</button>
+                </div>
+            </div>
+            <div id="tab3">
+                <div class="form-item">
+                    <label>Enter Album</label>
+                    <input type="text">
+                    <label>Enter Artist</label>
+                    <input type="text">
+                </div>
+                <div id="loginButton">
+                    <button class="button secondary round outline">Go</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="../js/kube.js"></script>
 </body>
 
 </html>
