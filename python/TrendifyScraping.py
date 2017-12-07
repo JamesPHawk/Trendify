@@ -8,6 +8,7 @@
 import spotipy
 import pprint
 from flask import Flask, render_template, request
+from flask_s3 import FlaskS3
 from spotipy.oauth2 import SpotifyClientCredentials
 
 client_credentials_manager = SpotifyClientCredentials(client_id="7a90865bc671479797914d96ba7d3021", client_secret="0abdd042f90e41adb88dd064c0c3f444")
@@ -17,7 +18,7 @@ results = sp.search(q="album:" + artist, type="album")
 top = sp.artist_top_tracks(artist_id="2YZyLoL8N0Wb9xBt1NhZWg", country="US")
 track = sp.audio_features(tracks="spotify:track:7vkPu9wwdUpB6dPmWBNcPv")
 pp = pprint.PrettyPrinter(indent=4)
-pp.pprint(results)
+# pp.pprint(results)
 # pp.pprint(top)
 #pp.pprint(track)
 # parsed = json.loads(results)
@@ -55,7 +56,7 @@ def trackAttributes(id):
     track_dict = {'acoustic': acoustic, 'danceability':danceability, 'valence':valence, 'energy':energy,
                   'liveness':liveness, 'loudness':loudness}
     for i in sorted(track_dict):
-        print i, track_dict[i]
+        print(i, track_dict[i])
         return track_dict[i]
 
 
@@ -71,7 +72,7 @@ def albumAttributes(album, artist):
             break
     val = results.get('albums').get('items')[count].get('available_markets')
     album_dict = {'Available markets for album: ' : val}
-    print album_dict
+    print(album_dict)
     return album_dict
 
 
@@ -85,7 +86,7 @@ def artistAttributes(artist):
     artist_dict = {'Genres associated with artist:': genres, 'Artist popularity:':popularity}
 
     for i in artist_dict:
-        print i, artist_dict[i]
+        print(i, artist_dict[i])
         return artist_dict[i]
 
 
@@ -94,8 +95,9 @@ app = Flask(__name__)
 def index():
     return render_template("https://dzcq7nfhi7t6b.cloudfront.net")
 
-@app.route('/results.html', methods=['POST'])
+@app.route('/homepage.html', methods=['GET, POST'])
 def my_link():
+    print("In here")
     song = request.form['Song']
     artist = request.form['Artist']
     album = request.form['Album']
@@ -108,4 +110,5 @@ def my_link():
         return albumAttributes(album, artist)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.config['SERVER_NAME'] = 'https://dzcq7nfhi7t6b.cloudfront.net/homepage'
+    app.run(host='0.0.0.0', port=6943, debug=True)
