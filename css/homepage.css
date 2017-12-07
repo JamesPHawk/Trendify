@@ -13,32 +13,14 @@
     z-index: -1;
 }
 
+/* Dropdown Button */
+
 #dropdown {
     position: absolute;
 }
 
-#dropbtn {
-    background-color: brown;
-}
-
-#dropbtn a {
-    text-decoration: none;
-    color: white;
-}
-
-#links {
-    position: absolute;
-    display: none;
-    background-color: #f9f9f9;
-    min-width: 160px;
-}
-
-#links a {
-    display: block;
-    padding: 10px;
-    text-decoration: none;
-    border: 1px solid black;
-    color: brown;
+#dropdown h1 {
+    padding: 5px;
 }
 
 #links a:hover {
@@ -48,4 +30,106 @@
 
 #dropdown:hover #links {
     display: block;
+}
+
+#form {
+    position: relative;
+    top: 300px;
+}
+
+/* Main Box */
+
+#box {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.87);
+    width: 420px;
+    height: 300px;
+    position: absolute;
+    border-radius: 15px;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+/* Options (Tabs) */
+
+#options {
+    position: inherit;
+    padding: 10px;
+}
+
+#options ul {
+    border-radius: 10px;
+}
+
+#options ul li {
+    width: 133px;
+    font-size: 20px;
+}
+
+#options ul li:hover {
+    border-radius: 10px;
+}
+
+#options ul li a {
+    color: white;
+    text-align: center;
+}
+
+#options ul li a:hover {
+    color: brown;
+}
+
+.tabs li:not(.active) a:hover {
+    border-radius: 10px;
+}
+
+/* Form */
+
+.form {
+    position: inherit;
+    top: 50px;
+    left: 20px;
+    margin-top: 5px;
+}
+
+.form-item {
+    text-align: left;
+}
+
+.form-item label {
+    color: rgb(108, 114, 122);
+}
+
+.form-item .desc {
+    color: rgb(154, 158, 165);
+}
+
+#descr {
+    position: fixed;
+    top: 130px;
+    left: 460px;
+    width: 380px;
+}
+
+/* Selector */
+
+#loginButton {
+    position: inherit;
+    float: left;
+    left: 20px;
+    top: 230px;
+}
+
+#loginButton button {
+    border: 2px rgb(108, 114, 122) solid;
+    color: rgb(108, 114, 122);
+    font-size: 18px;
+}
+
+#loginButton button:hover {
+    color: white;
+    border: 2px white solid;
 }
