@@ -61,6 +61,7 @@ def trackAttributes(id):
 #--------ALBUM-----------#
 #param: album and artist and returns available markets
 def albumAttributes(album, artist):
+    results = sp.search(q="album:" + album, type="album")
     count = 0
     for i in results.get('albums').get('items'):
         if((results.get('albums').get('items')[count].get('artists')[0].get('name')) != artist):
@@ -74,8 +75,10 @@ def albumAttributes(album, artist):
 
 
 
-#--------ARTIST-----------#
-def artistAttributes():
+#--------ARTIST-----------#\
+#param artist and return artist popularity and genres associated with artist
+def artistAttributes(artist):
+    results = sp.search(q="artist:" + artist, type="artist")
     genres = results.get('artists').get('items')[0].get('genres')
     popularity = results.get('artists').get('items')[0].get('popularity')
     artist_dict = {'Genres associated with artist:': genres, 'Artist popularity:':popularity}
