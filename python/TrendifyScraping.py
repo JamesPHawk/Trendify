@@ -7,17 +7,20 @@
 
 import spotipy
 import pprint
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for
 from flask_s3 import FlaskS3
 from spotipy.oauth2 import SpotifyClientCredentials
+from pymongo import MongoClient
+from pymongo.collection import ReturnDocument
+import pymongo
 
 client_credentials_manager = SpotifyClientCredentials(client_id="7a90865bc671479797914d96ba7d3021", client_secret="0abdd042f90e41adb88dd064c0c3f444")
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
-artist = "Views"
-results = sp.search(q="album:" + artist, type="album")
-top = sp.artist_top_tracks(artist_id="2YZyLoL8N0Wb9xBt1NhZWg", country="US")
-track = sp.audio_features(tracks="spotify:track:7vkPu9wwdUpB6dPmWBNcPv")
-pp = pprint.PrettyPrinter(indent=4)
+# artist = "Views"
+# results = sp.search(q="album:" + artist, type="album")
+# top = sp.artist_top_tracks(artist_id="2YZyLoL8N0Wb9xBt1NhZWg", country="US")
+# track = sp.audio_features(tracks="spotify:track:7vkPu9wwdUpB6dPmWBNcPv")
+# pp = pprint.PrettyPrinter(indent=4)
 # pp.pprint(results)
 # pp.pprint(top)
 #pp.pprint(track)
@@ -90,12 +93,18 @@ def artistAttributes(artist):
         return artist_dict[i]
 
 
+client = MongoClient('mongodb://localhost:27017')
+
+csu = "http://128.210.106.85"
+port = 80
+redirectURI = csu
+
 app = Flask(__name__)
 @app.route('/')
-def index():
-    return render_template("https://dzcq7nfhi7t6b.cloudfront.net")
+def home():
+    return render_template("homepage.html")
 
-@app.route('/homepage.html', methods=['GET, POST'])
+@app.route('/result.html', methods=['POST'])
 def my_link():
     print("In here")
     song = request.form['Song']
@@ -111,4 +120,4 @@ def my_link():
 
 if __name__ == '__main__':
     app.config['SERVER_NAME'] = 'https://dzcq7nfhi7t6b.cloudfront.net/homepage'
-    app.run(host='0.0.0.0', port=6943, debug=True)
+    app.run(host='0.0.0.0', port=port, debug=True)
