@@ -7,6 +7,7 @@
 
 import spotipy
 import pprint
+from flask import Flask, render_template, request
 from spotipy.oauth2 import SpotifyClientCredentials
 
 client_credentials_manager = SpotifyClientCredentials(client_id="7a90865bc671479797914d96ba7d3021", client_secret="0abdd042f90e41adb88dd064c0c3f444")
@@ -88,4 +89,23 @@ def artistAttributes(artist):
         return artist_dict[i]
 
 
+app = Flask(__name__)
+@app.route('/')
+def index():
+    return render_template("https://dzcq7nfhi7t6b.cloudfront.net")
 
+@app.route('/results.html', methods=['POST'])
+def my_link():
+    song = request.form['Song']
+    artist = request.form['Artist']
+    album = request.form['Album']
+    if song is None and album is None:
+        return artistAttributes(artist)
+    elif album is None:
+        getSongID(song, artist)
+        return trackAttributes(artist)
+    elif song is None:
+        return albumAttributes(album, artist)
+
+if __name__ == '__main__':
+    app.run(debug=True)
