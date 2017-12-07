@@ -11,12 +11,12 @@ from spotipy.oauth2 import SpotifyClientCredentials
 
 client_credentials_manager = SpotifyClientCredentials(client_id="7a90865bc671479797914d96ba7d3021", client_secret="0abdd042f90e41adb88dd064c0c3f444")
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
-artist = "Drake"
-results = sp.search(q="artist:" + artist, type="artist")
+artist = "Views"
+results = sp.search(q="album:" + artist, type="album")
 top = sp.artist_top_tracks(artist_id="2YZyLoL8N0Wb9xBt1NhZWg", country="US")
 track = sp.audio_features(tracks="spotify:track:7vkPu9wwdUpB6dPmWBNcPv")
 pp = pprint.PrettyPrinter(indent=4)
-#pp.pprint(results)
+pp.pprint(results)
 # pp.pprint(top)
 #pp.pprint(track)
 # parsed = json.loads(results)
@@ -59,15 +59,19 @@ def trackAttributes(id):
 
 
 #--------ALBUM-----------#
-#param: album and returns available markets
-#def albumAttributes(album):
+#param: album and artist and returns available markets
+def albumAttributes(album, artist):
+    count = 0
+    for i in results.get('albums').get('items'):
+        if((results.get('albums').get('items')[count].get('artists')[0].get('name')) != artist):
+            count = count + 1
+        else:
+            break
+    val = results.get('albums').get('items')[count].get('available_markets')
+    album_dict = {'Available markets for album: ' : val}
+    print album_dict
+    return album_dict
 
- #   available_markets = track[0].get("available_markets")
-
-
-  #  album_dict = {'Available markets': available_markets}
-   # for i in album_dict:
-    #    print i, album_dict[i]
 
 
 #--------ARTIST-----------#
