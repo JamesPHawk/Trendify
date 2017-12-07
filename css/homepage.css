@@ -94,6 +94,7 @@
 
 #options ul li a {
     color: white;
+    text-align: center;
 }
 
 #options ul li a:hover {
