@@ -13,6 +13,7 @@ from spotipy.oauth2 import SpotifyClientCredentials
 from pymongo import MongoClient
 from pymongo.collection import ReturnDocument
 import pymongo
+import json
 
 client_credentials_manager = SpotifyClientCredentials(client_id="7a90865bc671479797914d96ba7d3021", client_secret="0abdd042f90e41adb88dd064c0c3f444")
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
@@ -56,11 +57,12 @@ def trackAttributes(id):
     liveness = track[0].get("liveness")
     loudness = track[0].get("loudness")
 
-    track_dict = {'acoustic': acoustic, 'danceability':danceability, 'valence':valence, 'energy':energy,
-                  'liveness':liveness, 'loudness':loudness}
-    for i in sorted(track_dict):
-        print(i, track_dict[i])
-        return track_dict[i]
+    track_dict = {acoustic, danceability, valence, energy,
+                  liveness, loudness}
+    st = ""
+    for val in track_dict:
+        st = st+ ' '+ str(val)
+    return st
 
 
 #--------ALBUM-----------#
@@ -76,7 +78,7 @@ def albumAttributes(album, artist):
     val = results.get('albums').get('items')[count].get('available_markets')
     album_dict = {'Available markets for album: ' : val}
     print(album_dict)
-    return album_dict
+    return str(album_dict)
 
 
 
@@ -88,9 +90,7 @@ def artistAttributes(artist):
     popularity = results.get('artists').get('items')[0].get('popularity')
     artist_dict = {'Genres associated with artist:': genres, 'Artist popularity:':popularity}
 
-    for i in artist_dict:
-        print(i, artist_dict[i])
-        return artist_dict[i]
+    return str(artist_dict)
 
 
 client = MongoClient('mongodb://localhost:27017')
@@ -102,19 +102,10 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
-@app.route('/result.html', methods=['POST'])
+@app.route('/run/', methods=['POST'])
 def my_link():
-    print("In here")
-    song = request.form['Song']
-    artist = request.form['Artist']
-    album = request.form['Album']
-    if song is None and album is None:
-        return artistAttributes(artist)
-    elif album is None:
-        getSongID(song, artist)
-        return trackAttributes(artist)
-    elif song is None:
-        return albumAttributes(album, artist)
+    artist = request.form['artist']
+    return artistAttributes(artist)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=port, debug=True)

@@ -5,64 +5,31 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/kube.css">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/javascript" href="{{ url_for('static', filename='kube.js') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='kube.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='homepage.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Raleway:800" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/homepage.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../static/css/homepage.css"> -->
     <title>Trendify -- Home</title>
 </head>
 
 <body>
     <div id="title">
     </div>
-    <img src="views/img/record.jpg" alt="Record Player" id="homeBG">
+    <img src="../static/img/record.jpg" alt="Record Player" id="homeBG">
     <div id="dropdown">
         <h1>Trendify</h1>
     </div>
     <div id="box">
         <!-- <p>Log In or Sign Up</p> -->
-        <div id="options">
-            <nav class="tabs" data-component="tabs" data-equals="true">
-                <ul>
-                    <li class="active"><a href="#tab1">Song</a></li>
-                    <li><a href="#tab2">Artist</a></li>
-                    <li><a href="#tab3">Album</a></li>
-                </ul>
-            </nav>
-        </div>
         <div id="descr">
-            <p>Learn about any song, artist, or album you can think of.</p>
+            <p>Find out how popular any artist is.</p>
         </div>
         <form action="/run/" method="POST" class="form" id="mainForm">
-            <div id="tab1">
-                <div class="form-item">
-                    <label>Song</label>
-                    <input type="text" name="Song">
-                    <br>
-                    <label>Artist</label>
-                    <input type="text" name="Artist">
-                </div>
-                <div id="loginButton">
-                    <input type="submit" id="run" value="Go" class="button secondary round outline">
-                </div>
-            </div>
-            <div id="tab2">
-                <div class="form-item">
-                    <label>Artist</label>
-                    <input type="text" name="Artist">
-                </div>
-                <div id="loginButton">
-                    <input type="submit" id="run" value="Go" class="button secondary round outline">
-                </div>
-            </div>
-            <div id="tab3">
-                <div class="form-item">
-                    <label>Album</label>
-                    <input type="text" name="Album">
-                    <br>
-                    <label>Artist</label>
-                    <input type="text" name="Artist">
-                </div>
+            <div id="search">
+                <label>Artist</label>
+                <input type="text" id="artist" name="artist">
                 <div id="loginButton">
                     <input type="submit" id="run" value="Go" class="button secondary round outline">
                     <script>
@@ -74,9 +41,6 @@
             </div>
         </form>
     </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="js/kube.js"></script>
 </body>
 
 </html>
